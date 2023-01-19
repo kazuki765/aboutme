@@ -50,11 +50,5 @@ module.exports = {
         'prettier/prettier': 'off',
       },
     },
-    {
-      plugins: ['prettier'],
-      rules: {
-        'prettier/prettier': 'error',
-      },
-    },
   ],
 }

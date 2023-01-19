@@ -10,7 +10,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "prepare": "husky install",
-    "fmt": "npx prettier --write ."
+    "fmt": "npx prettier --write .",
+    "lint": "npx eslint"
   },
   "dependencies": {
     "astro": "^1.9.0"
@@ -19,7 +20,6 @@
     "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.32.0",
     "eslint-plugin-astro": "^0.23.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "prettier": "2.8.3"
