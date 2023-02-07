@@ -1,0 +1,13 @@
+---
+export interface Props {
+  type: 'button' | 'submit'
+  value: string
+  classList: string[]
+  disabled?: boolean
+  design: 'primary' | 'secondary' | 'accent' | 'info' | 'warn' | 'danger'
+}
+
+const { type, value, classList, disabled } = Astro.props
+---
+
+<button type={type} class:list={classList} disabled={disabled ? 'disabled' : null}>{value}</button>

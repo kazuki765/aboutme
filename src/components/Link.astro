@@ -1,0 +1,23 @@
+---
+export interface Props {
+  href: string
+  text: string
+  design: 'link' | 'buttton'
+}
+
+const { href, text, design } = Astro.props
+---
+
+<a href={href} class={`${design}`}>{text}</a>
+
+<style>
+  .button {
+    display: inline-block;
+    color: seagreen;
+    background-color: aquamarine;
+    text-decoration: none;
+    vertical-align: middle;
+    border: 1px solid;
+    border-radius: 2px;
+  }
+</style>
