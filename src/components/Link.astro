@@ -1,23 +1,63 @@
 ---
+import type { AstroComponentSlots } from 'astro/dist/runtime/server'
+
 export interface Props {
   href: string
-  text: string
-  design: 'link' | 'buttton'
+  design?: 'link' | 'button'
+  size?: 'small' | 'medium' | 'large'
+  pushed?: boolean
 }
 
-const { href, text, design } = Astro.props
+const { href, text, design = 'link', size = 'medium', pushed } = Astro.props
 ---
 
-<a href={href} class={`${design}`}>{text}</a>
+<a href={href} class={`${design} ${size} ${pushed ? 'active' : ''}`}><slot /></a>
 
 <style>
   .button {
-    display: inline-block;
-    color: seagreen;
-    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    color: var(--font-color-normal);
     text-decoration: none;
-    vertical-align: middle;
-    border: 1px solid;
-    border-radius: 2px;
+
+    transition: all 0.1s ease-out;
+
+    &.small {
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      box-shadow: 0.25rem 0.25rem 0.5rem var(--shadow-dark),
+        -0.25rem -0.25rem 0.5rem var(--shadow-light);
+
+      &.active {
+        box-shadow: inset 0.25rem 0.25rem 0.5rem var(--shadow-dark),
+          inset -0.25rem -0.25rem 0.5rem var(--shadow-light);
+      }
+    }
+
+    &.medium {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0.5rem 0.5rem 0.75rem var(--shadow-dark),
+        -0.5rem -0.5rem 0.75rem var(--shadow-light);
+
+      &.active {
+        box-shadow: inset 0.5rem 0.5rem 0.75rem var(--shadow-dark),
+          inset -0.5rem -0.5rem 0.75rem var(--shadow-light);
+      }
+    }
+
+    &.large {
+      padding: 1rem 2rem;
+      border-radius: 0.75rem;
+      box-shadow: 0.75rem 0.75rem 1rem var(--shadow-dark),
+        -0.75rem -0.75rem 1rem var(--shadow-light);
+
+      &.active {
+        box-shadow: inset 0.75rem 0.75rem 1rem var(--shadow-dark),
+          inset -0.75rem -0.75rem 1rem var(--shadow-light);
+      }
+    }
   }
 </style>

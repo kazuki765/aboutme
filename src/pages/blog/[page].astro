@@ -20,7 +20,7 @@ const { id } = Astro.params
 const { page } = Astro.props
 ---
 
-<BlogLayout title={id ?? ''}>
+<BlogLayout title={id ?? ''} url={`/blog/${id}`}>
   <div>{page.currentPage}</div>
   <ul>
     {

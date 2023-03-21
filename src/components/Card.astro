@@ -1,11 +1,20 @@
 ---
-export interface Props {
-  children: string
-}
-
-const { children } = Astro.props
 ---
 
-<div>
-  <slot />
+<div class='card'>
+  <div class='title'>
+    <slot name='card-title' />
+  </div>
+  <div class='body'><slot name='card-body' /></div>
+  <div class='footer'><slot name='card-footer' /></div>
 </div>
+
+<style>
+  div.card {
+    width: 100%;
+    min-width: 20rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0.25rem 0.25rem 1rem var(--shadow-dark), -0.25rem -0.25rem 1rem var(--shadow-light);
+  }
+</style>

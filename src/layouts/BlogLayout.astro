@@ -1,9 +1,7 @@
 ---
-import Layout from './Layout.astro'
+import Layout, { LayoutProps } from './Layout.astro'
 
-type Props = {
-  title: string
-}
+type Props = LayoutProps & {}
 
 const { title } = Astro.props
 ---
