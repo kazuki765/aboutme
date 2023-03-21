@@ -1,0 +1,21 @@
+---
+import { getBlogs } from '../../api/microcms'
+import Card from '../../components/Card.astro'
+import BlogLayout from '../../layouts/BlogLayout.astro'
+
+const blogs = await getBlogs({ offset: 0, limit: 20 })
+---
+
+<BlogLayout title='blog'>
+  <ul>
+    {
+      blogs.contents.map((it) => (
+        <li>
+          <Card>
+            <a href={`/blog/${it.id}`}>{it.title}</a>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</BlogLayout>

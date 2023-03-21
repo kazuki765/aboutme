@@ -1,0 +1,38 @@
+---
+import type { GetStaticPathsOptions, Page } from 'astro'
+import { BlogsResponse, getBlogs } from '../../api/microcms'
+import BlogLayout from '../../layouts/BlogLayout.astro'
+import Card from '../../components/Card.astro'
+
+type Blog = BlogsResponse['contents'][number]
+
+type Props = {
+  page: Page<Blog>
+}
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const allpages = await getBlogs()
+
+  return paginate(allpages.contents, { pageSize: 5 })
+}
+
+const { id } = Astro.params
+const { page } = Astro.props
+---
+
+<BlogLayout title={id ?? ''}>
+  <div>{page.currentPage}</div>
+  <ul>
+    {
+      page.data.map((it) => (
+        <li>
+          <Card>
+            <a href={`/blog/${it.id}`}>{it.title}</a>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+  <a href={page.url.prev}>prev</a>
+  <a href={page.url.next}>next</a>
+</BlogLayout>
