@@ -6,7 +6,7 @@ import BlogLayout from '../../layouts/BlogLayout.astro'
 const blogs = await getBlogs({ offset: 0, limit: 20 })
 ---
 
-<BlogLayout title='blog'>
+<BlogLayout title='blog' url='/blog'>
   <ul>
     {
       blogs.contents.map((it) => (

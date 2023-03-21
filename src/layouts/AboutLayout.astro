@@ -1,10 +1,10 @@
 ---
-import Layout from './Layout.astro'
-type Props = { title: string }
-const { title } = Astro.props
+import Layout, { LayoutProps } from './Layout.astro'
+type Props = LayoutProps & {}
+const { title, url } = Astro.props
 ---
 
-<Layout title={title}>
+<Layout title={title} url={url}>
   <div>
     <slot />
   </div>

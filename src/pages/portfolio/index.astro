@@ -1,9 +1,69 @@
 ---
+import Card from '../../components/Card.astro'
+import Link from '../../components/Link.astro'
+import PageHeading from '../../components/PageHeading.astro'
 import Layout from '../../layouts/Layout.astro'
 ---
 
-<Layout title='Welcome to Astro.'>
+<Layout title='Welcome to Astro.' url='/portfolio'>
   <main>
-    <h1>ポートフォリオ一覧</h1>
+    <PageHeading>ポートフォリオ</PageHeading>
+    <ul>
+      <li>
+        <Card>
+          <h2 slot='card-title'>
+            <Link href='https://clicker-empire-game.pages.dev/'>Click Empire Game</Link>
+          </h2>
+          <div slot='card-body'>
+            <p>
+              <Link design='link' href='https://recursionist.io/'>
+                Recursion
+              </Link>という学習サイトのお題で出たゲームをQwikを用いて実装してみました。
+            </p>
+            <figure>
+              <img src='/thumbnail-click-empire-game.png' />
+            </figure>
+          </div>
+        </Card>
+      </li>
+      <!-- <li><Card>carddasu</Card></li> -->
+    </ul>
   </main>
 </Layout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  ul {
+    display: flex;
+    padding: 1rem;
+    margin: 0.5rem;
+    max-width: 40rem;
+    border-radius: 0.25rem;
+    list-style: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* box-shadow: inset 0.25rem 0.25rem 1rem var(--shadow-dark),
+      inset -0.25rem -0.25rem 1rem var(--shadow-light); */
+    overflow-wrap: anywhere;
+
+    & li {
+      width: 100%;
+    }
+
+    & figure {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+</style>

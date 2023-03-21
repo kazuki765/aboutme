@@ -18,7 +18,7 @@ const { id, page } = Astro.params
 const { blog } = Astro.props
 ---
 
-<BlogLayout title={id ?? ''}>
+<BlogLayout title={id ?? ''} url='/blog'>
   <div>{page}</div>
   <div set:html={blog.content} />
 </BlogLayout>

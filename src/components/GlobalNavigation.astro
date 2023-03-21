@@ -1,8 +1,81 @@
+---
+import Link from './Link.astro'
+
+interface Props {
+  url: string
+}
+const { url } = Astro.props
+const isHome = !url.includes('/about') && !url.includes('/portfolio')
+const isPortfolio = url.includes('/portfolio')
+const isAbout = url.includes('/about')
+---
+
 <nav>
   <ul>
-    <li><a href='/'>Home</a></li>
-    <li><a href='/about'>About</a></li>
-    <li><a href='/portfolio'>Portfolio</a></li>
-    <li><a href='/blog'>Blog</a></li>
+    <Link href='/' size='small' design='button' pushed={isHome}>
+      <i class='fa-solid fa-house-chimney' style='color: #8b2d44;'></i>
+      <span>Home</span>
+    </Link>
+    <Link href='/about' size='small' design='button' pushed={isAbout}>
+      <i class='fa-solid fa-user' style='color: #4a7864;'></i>
+      <span>About</span>
+    </Link>
+    <Link href='/portfolio' size='small' design='button' pushed={isPortfolio}>
+      <i class='fa-solid fa-briefcase' style='color: #5a5ca0;'></i>
+      <span>Portfolio</span>
+    </Link>
   </ul>
 </nav>
+
+<style>
+  @media (max-width: 768px) {
+    nav {
+      & > ul {
+        justify-content: space-between;
+
+        & span {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    nav {
+      & > ul {
+        justify-content: center;
+      }
+    }
+  }
+  nav {
+    display: flex;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+    justify-content: center;
+    max-width: 30rem;
+    /* box-shadow: 0.25rem 0.25rem 1rem var(--shadow-dark), -0.25rem -0.25rem 1rem var(--shadow-light); */
+
+    & > ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0.5rem 0;
+      padding: 0;
+      gap: 2rem;
+      width: fit-content;
+    }
+  }
+
+  i {
+    display: flex !important;
+    width: 1.5rem;
+    height: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+  }
+
+  span {
+    margin-left: 0.25rem;
+  }
+</style>
