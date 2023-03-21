@@ -5,9 +5,9 @@ interface Props {
   url: string
 }
 const { url } = Astro.props
-const isHome = !url?.includes('/about') && !url?.includes('/portfolio')
-const isPortfolio = url?.includes('/portfolio')
-const isAbout = url?.includes('/about')
+const isHome = !url.includes('/about') && !url.includes('/portfolio')
+const isPortfolio = url.includes('/portfolio')
+const isAbout = url.includes('/about')
 ---
 
 <nav>
