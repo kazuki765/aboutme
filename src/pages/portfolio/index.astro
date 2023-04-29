@@ -8,26 +8,71 @@ import Layout from '../../layouts/Layout.astro'
 <Layout title='Welcome to Astro.' url='/portfolio'>
   <main>
     <PageHeading>ポートフォリオ</PageHeading>
-    <ul>
-      <li>
-        <Card>
-          <h2 slot='card-title'>
-            <Link href='https://clicker-empire-game.pages.dev/'>Click Empire Game</Link>
-          </h2>
-          <div slot='card-body'>
-            <p>
-              <Link design='link' href='https://recursionist.io/'>
-                Recursion
-              </Link>という学習サイトのお題で出たゲームをQwikを用いて実装してみました。
-            </p>
-            <figure>
-              <img src='/thumbnail-click-empire-game.png' />
-            </figure>
-          </div>
-        </Card>
-      </li>
-      <!-- <li><Card>carddasu</Card></li> -->
-    </ul>
+    <div class='grid'>
+      <div></div>
+      <div></div>
+      <div class='content'>
+        <ul>
+          <li>
+            <Card>
+              <h2 slot='card-title'>
+                <Link href='https://clicker-empire-game.pages.dev/' openNewWindow={true}>
+                  Click Empire Game
+                </Link>
+              </h2>
+              <div slot='card-body'>
+                <p>
+                  <Link design='link' href='https://recursionist.io/' openNewWindow={true}>
+                    Recursion
+                  </Link>という学習サイトのお題で出たゲームをQwikを用いて実装してみました。
+                </p>
+                <figure>
+                  <img src='/thumbnail-click-empire-game.png' />
+                </figure>
+              </div>
+            </Card>
+          </li>
+          <li>
+            <Card>
+              <h2 slot='card-title'>
+                <Link href='https://clicker-empire-game.pages.dev/' openNewWindow={true}>
+                  Click Empire Game
+                </Link>
+              </h2>
+              <div slot='card-body'>
+                <p>
+                  <Link design='link' href='https://recursionist.io/' openNewWindow={true}>
+                    Recursion
+                  </Link>という学習サイトのお題で出たゲームをQwikを用いて実装してみました。
+                </p>
+                <figure>
+                  <img src='/thumbnail-click-empire-game.png' />
+                </figure>
+              </div>
+            </Card>
+          </li>
+          <li>
+            <Card>
+              <h2 slot='card-title'>
+                <Link href='https://clicker-empire-game.pages.dev/' openNewWindow={true}>
+                  Click Empire Game
+                </Link>
+              </h2>
+              <div slot='card-body'>
+                <p>
+                  <Link design='link' href='https://recursionist.io/' openNewWindow={true}>
+                    Recursion
+                  </Link>という学習サイトのお題で出たゲームをQwikを用いて実装してみました。
+                </p>
+                <figure>
+                  <img src='/thumbnail-click-empire-game.png' />
+                </figure>
+              </div>
+            </Card>
+          </li>
+        </ul>
+      </div>
+    </div>
   </main>
 </Layout>
 
@@ -38,6 +83,26 @@ import Layout from '../../layouts/Layout.astro'
     align-items: center;
     justify-content: center;
   }
+
+  div.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    grid-auto-flow: row;
+
+    & div.content {
+      grid-column: 2/4;
+      grid-row: 1/3;
+      overflow-y: auto;
+    }
+
+    & > div {
+      border-radius: 0.25rem;
+      box-shadow: inset 0.25rem 0.25rem 1rem var(--shadow-dark),
+        inset -0.25rem -0.25rem 1rem var(--shadow-light);
+    }
+  }
   ul {
     display: flex;
     padding: 1rem;
@@ -46,7 +111,7 @@ import Layout from '../../layouts/Layout.astro'
     border-radius: 0.25rem;
     list-style: none;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2rem;
     /* box-shadow: inset 0.25rem 0.25rem 1rem var(--shadow-dark),
       inset -0.25rem -0.25rem 1rem var(--shadow-light); */
     overflow-wrap: anywhere;

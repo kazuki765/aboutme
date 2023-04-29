@@ -33,6 +33,7 @@ const frontmatter = Astro.props
       <slot />
     </main>
   </body>
+  <script src='../script/three.js'></script>
 </html>
 <style is:global>
   :root {
@@ -40,19 +41,33 @@ const frontmatter = Astro.props
     --shadow-dark: #6a6d6c;
     --shadow-light: #ffffff;
     --font-color-normal: #001f3f;
+    --font-color-link: #1d3a91;
+    --nav-height: 50px;
   }
   html {
     font-family: 'Noto Sans JP', sans-serif;
     background-color: var(--background);
+    font-size: 12px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    html {
+      font-size: 16px;
+    }
   }
 
   * {
     color: var(--font-color-normal);
     box-sizing: border-box;
   }
-  code {
-    font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-      Bitstream Vera Sans Mono, Courier New, monospace;
+  main {
+    margin-top: var(--nav-height);
   }
 
   /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
