@@ -6,12 +6,18 @@ export interface Props {
   design?: 'link' | 'button'
   size?: 'small' | 'medium' | 'large'
   pushed?: boolean
+  openNewWindow?: boolean
 }
 
-const { href, text, design = 'link', size = 'medium', pushed } = Astro.props
+const { href, text, design = 'link', size = 'medium', pushed, openNewWindow } = Astro.props
 ---
 
-<a href={href} class={`${design} ${size} ${pushed ? 'active' : ''}`}><slot /></a>
+<a
+  href={href}
+  class={`${design} ${size} ${pushed ? 'active' : ''}`}
+  target={openNewWindow ? '_blank' : '_self'}
+  ><slot />{openNewWindow && <i class='fa-solid fa-arrow-up-right-from-square' />}</a
+>
 
 <style>
   .button {
@@ -59,5 +65,31 @@ const { href, text, design = 'link', size = 'medium', pushed } = Astro.props
           inset -0.75rem -0.75rem 1rem var(--shadow-light);
       }
     }
+  }
+
+  .link {
+    color: var(--font-color-link);
+    position: relative;
+    text-decoration: none;
+    &:after {
+      position: absolute;
+      left: 0;
+      content: '';
+      display: block;
+      width: 0;
+      height: 0.1em;
+      min-height: 1px;
+      background: var(--font-color-link);
+      transition: width 0.2s ease-out;
+    }
+
+    &:hover:after {
+      width: 100%;
+    }
+  }
+
+  i {
+    margin-left: 0.25em;
+    color: var(--font-color-link);
   }
 </style>
